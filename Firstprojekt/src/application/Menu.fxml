@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="885.0" prefWidth="1024.0"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controller.Controller_Registration">
+	<children>
+		<MenuBar layoutX="-7.0" prefHeight="29.0" prefWidth="1024.0">
+			<menus>
+				<Menu mnemonicParsing="false" text="Home">
+					<items>
+						<MenuItem mnemonicParsing="false" text="Close" />
+					</items>
+				</Menu>
+				<Menu mnemonicParsing="false" text="Edit">
+					<items>
+						<MenuItem mnemonicParsing="false" text="Delete" />
+					</items>
+				</Menu>
+				<Menu mnemonicParsing="false" text="Help">
+					<items>
+						<MenuItem mnemonicParsing="false" text="About" />
+					</items>
+				</Menu>
+				<Menu mnemonicParsing="false" onAction="#performRegistration"
+					text="Registration" fx:id="menuRegister">
+				</Menu>
+			</menus>
+		</MenuBar>
+	</children>
+</AnchorPane>
