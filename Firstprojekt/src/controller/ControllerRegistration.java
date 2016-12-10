@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  * @author yotti
  *
  */
-public class Controller_Registration {
+public class ControllerRegistration {
 
 	@FXML
 	private Menu menuRegister;
