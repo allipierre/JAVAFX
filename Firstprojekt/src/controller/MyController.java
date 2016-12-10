@@ -6,6 +6,8 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -26,8 +28,7 @@ public class MyController implements Initializable {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-
+		setUpAccommodation();
 	}
 
 	public void setData() {
@@ -37,5 +38,12 @@ public class MyController implements Initializable {
 		myCombobox.getItems().addAll("RV", "Tent", "Cabing");
 
 	}
+
+    private void setUpAccommodation() {
+        ObservableList<String> items = FXCollections.observableArrayList();
+        items.addAll("RV", "ST", "UT");
+        myCombobox.setItems(items);
+        myCombobox.getSelectionModel().select(0);
+    }
 
 }
