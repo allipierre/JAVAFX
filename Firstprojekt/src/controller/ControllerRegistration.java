@@ -147,10 +147,11 @@ public class ControllerRegistration {
 										ModellHome m = new ModellHome();
 										// ModellDialog d=new
 										// ModellDialog(person.getName());
-										m.setIdm(person.getName());
+										
 										System.out.println("hallo" + m.getIdm());
 										System.out.println(m.getIdm());
-										ControllerDialog c = new ControllerDialog();
+										ControllerDialog c = new ControllerDialog(m);
+										m.setIdm(person.getName());
 										// c.setIDT();
 										System.out.println(person.getName() + "   " + person.getName());
 										c.performDialog();
