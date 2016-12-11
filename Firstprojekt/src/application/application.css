@@ -1,1 +1,39 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+#ID{
+	-fx-background-color:#3399ff;
+	-fx-text-fill:white;
+}
+
+#ID_R{
+	-fx-background-color:#3399ff;
+	-fx-text-fill:white !important;
+}
+
+
+#ID_C{
+	-fx-background-color:red;
+	-fx-text-fill:white !important;
+}
+
+#IDM{
+	-fx-background-color:#319ddb;
+}
+
+
+#IDB{
+	-fx-background-color:red;
+	-fx-text-fill:white !important;
+	
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+.table-view .column-header{
+    -fx-text-fill: -fx-selection-bar-text;
+    -fx-font-size: 10;
+    -fx-size: 50 ;
+    -fx-font-family: "Arial";
+}
