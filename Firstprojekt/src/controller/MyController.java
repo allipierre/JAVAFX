@@ -14,9 +14,10 @@ import java.util.ResourceBundle;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+import application.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.fxml.Initializable;
@@ -24,11 +25,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 
+
 /**
  * @author yotti
  *
  */
-public class MyController implements Initializable {
+public class MyController implements Initializable,ControlledScreen {
 	@FXML
 	public ComboBox<String> myCombobox;
 	@FXML
@@ -37,6 +39,8 @@ public class MyController implements Initializable {
 	public ComboBox<String> ET;
 	@FXML
 	public ListView<String> LET;
+	ScreensController myController;
+	 
 
 	// public Menu menur;
 
@@ -183,5 +187,22 @@ public class MyController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+
+	/* (non-Javadoc)
+	 * @see application.ControlledScreen#setScreenParent(controller.ControllerRegistration)
+	 */
+
+    
+    public void setScreenParent(ScreensController screenParent){ 
+        myController = screenParent; 
+     } 
+    
+    @FXML
+	private void goToScreen2(ActionEvent event) {
+		myController.setScreen(Main.screen1ID);
+	}
+   
+    
+    
 
 }

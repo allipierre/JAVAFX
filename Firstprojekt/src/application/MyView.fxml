@@ -91,7 +91,8 @@
 				<Font size="14.0" />
 			</font>
 		</Button>
-		<Button id="ID_C" layoutX="730.0" layoutY="784.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="102.0" stylesheets="@application.css" text="Cancel" />
+		<Button id="ID_C" layoutX="607.0" layoutY="784.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="102.0" stylesheets="@application.css" text="Cancel" />
 		<ListView fx:id="LET" layoutX="281.0" layoutY="534.0" prefHeight="77.0" prefWidth="161.0" />
+      <Button layoutX="794.0" layoutY="792.0" mnemonicParsing="false" onAction="#goToScreen2" text="Zurück" />
 	</children>
 </AnchorPane>

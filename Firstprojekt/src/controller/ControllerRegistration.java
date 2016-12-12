@@ -8,22 +8,26 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.ResourceBundle;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-import Modell.ModellDialog;
-import Modell.ModellHome;
+import application.Main;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
@@ -31,21 +35,25 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Pane;
+
 import javafx.stage.Stage;
 import javafx.util.Callback;
+
 
 /**
  * @author yotti
  *
  */
-public class ControllerRegistration {
+public class ControllerRegistration implements Initializable, ControlledScreen {
 
 	@FXML
 	private Menu menuRegister;
 	@FXML
 	private TableColumn IDTA;
+	@FXML
+	private TextField IDRTA;
 
 	@FXML
 	private TableColumn IDTA1;
@@ -64,6 +72,10 @@ public class ControllerRegistration {
 
 	@FXML
 	private MenuBar IDM;
+	@FXML
+	private Button IDST;
+
+	ScreensController myController;
 
 	@FXML
 	private void initialize() {
@@ -73,22 +85,41 @@ public class ControllerRegistration {
 		menuRegister.setText("");
 		setTable();
 
+		// Label lblIDST = new Label("Button");
+		// lblIDST.setOnMouseClicked((e) -> performDialoge());
+		// IDST.setGraphic(lblIDST);
+		// IDST.setText("");
+
 	}
 
-	@FXML
-	private void performRegistration() {
-		try {
-			Stage primaryStage = new Stage();
-			Parent root = FXMLLoader.load(getClass().getResource("/application/MyView.fxml"));
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
+//	@FXML
+//	private void performRegistration() {
+//		try {
+//			Stage primaryStage = new Stage();
+//			Parent root = FXMLLoader.load(getClass().getResource("/application/MyView.fxml"));
+//			Scene scene = new Scene(root);
+//			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+//			primaryStage.setScene(scene);
+//			primaryStage.show();
+//
+//		} catch (IOException s) {
+//
+//			s.printStackTrace();
+//		}
+//	}
 
-		} catch (IOException s) {
-
-			s.printStackTrace();
+	public void performDialoge() {
+		if (!IDRTA.getText().equals("")) {
+			ControllerDialog a = new ControllerDialog().start();
+			a.setId(IDRTA.getText());
+		} else {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Information Dialog");
+			alert.setHeaderText("Look, an Information Dialog");
+			alert.setContentText("I have a great message for you!");
+			alert.show();
 		}
+
 	}
 
 	public void setTable() {
@@ -142,19 +173,22 @@ public class ControllerRegistration {
 									setText(null);
 								} else {
 									btn.setOnAction((ActionEvent event) -> {
-										
+
 										Record person = getTableView().getItems().get(getIndex());
-										ModellHome m = new ModellHome();
+										// ModellHome m = new ModellHome();
 										// ModellDialog d=new
 										// ModellDialog(person.getName());
-										
-										System.out.println("hallo" + m.getIdm());
-										System.out.println(m.getIdm());
-										ControllerDialog c = new ControllerDialog(m);
-										m.setIdm(person.getName());
-										// c.setIDT();
-										System.out.println(person.getName() + "   " + person.getName());
-										c.performDialog();
+
+										// System.out.println("hallo" +
+										// m.getIdm());
+										// System.out.println(m.getIdm());
+										ControllerDialog c = new ControllerDialog().start();
+										// c.start();
+										// m.setIdm(person.getName());
+										c.setId(person.getName());
+										// System.out.println(person.getName() +
+										// " " + person.getName());
+										// c.start();
 
 										// Alert alert = new
 										// Alert(AlertType.INFORMATION);
@@ -226,4 +260,32 @@ public class ControllerRegistration {
 		}
 
 	}
+
+	@FXML
+	private void goToScreen2(ActionEvent event) {
+		myController.setScreen(Main.screen2ID);
+	}
+
+	@Override
+	public void setScreenParent(ScreensController screenParent) {
+
+		myController = screenParent;
+	}
+
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+		setTable();
+		Label lblRegister = new Label("Registration");
+		lblRegister.setOnMouseClicked((e) -> performRegistration());
+		menuRegister.setGraphic(lblRegister);
+		menuRegister.setText("");
+		setTable();
+
+	}
+	
+	@FXML
+	private void performRegistration() {
+    	myController.setScreen(Main.screen2ID);
+	}
+
 }

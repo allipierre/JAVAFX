@@ -37,3 +37,8 @@
     -fx-size: 50 ;
     -fx-font-family: "Arial";
 }
+
+
+#IDFG{
+	-fx-background-color:#319ddb;
+}
