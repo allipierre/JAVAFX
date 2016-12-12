@@ -20,6 +20,8 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		ScreensController mainContainer = new ScreensController();
+		primaryStage.setResizable(false);
+
 		mainContainer.loadScreen(Main.screen1ID, Main.screen1File);
 		mainContainer.loadScreen(Main.screen2ID, Main.screen2File);
 		// mainContainer.loadScreen(Main.screen3ID, Main.screen3File);
@@ -29,6 +31,7 @@ public class Main extends Application {
 		Group root = new Group();
 		root.getChildren().addAll(mainContainer);
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
